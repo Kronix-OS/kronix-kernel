@@ -1,0 +1,69 @@
+# Setup dependabot
+
+version: 2
+updates:
+  - package-ecosystem: "cargo"
+    directory: "/zerOS
+    schedule:
+      interval: "daily"
+      time: "10:00"
+      timezone: "Europe/Paris"
+    allow:
+      - dependency-name: "*"
+        dependency-type: "all"
+    rebase-strategy: "disabled"
+  
+  - package-ecosystem: "cargo"
+    directories:
+      - "/proc-macro-utils
+      - "/macro-utils"
+      - "/generate-target"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Europe/Paris"
+    allow:
+      - dependency-name: "*"
+        dependency-type: "all"
+    rebase-strategy: "disabled"
+  
+  - package-ecosystem: "gitsubmodule"
+    directories:
+      - "*"
+      - "**"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Europe/Paris"
+    allow:
+      - dependency-name: "*"
+        dependency-type: "all"
+    rebase-strategy: "disabled"
+
+  - package-ecosystem: "pip"
+    directories:
+      - "/"
+      - "/scripts"
+    schedule:
+      interval: "monthly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Europe/Paris"
+    allow:
+      - dependency-name: "*"
+        dependency-type: "all"
+    rebase-strategy: "disabled"
+  
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "10:00"
+      timezone: "Europe/Paris"
+    allow:
+      - dependency-name: "*"
+        dependency-type: "all"
+    rebase-strategy: "disabled"

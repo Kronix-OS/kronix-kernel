@@ -1,0 +1,53 @@
+
+name: 'Dependency review'
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches: 
+      - "main"
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+      - ready_for_review
+  
+permissions:
+  contents: read
+  # Write permissions for pull-requests are required for using the `comment-summary-in-pr` option, comment out if you aren't using this option
+  pull-requests: write
+
+env:
+  HEAD_REF: ${{ github.event.ref }}
+  BASE_REF: ${{ (github.event.base_ref != null) && github.event.base_ref || github.event.ref }}
+  IS_PR: ${{ contains(github.event_name, 'pull_request') }}
+  IS_PUSH: ${{ contains(github.event_name, 'push') }}
+
+jobs:
+  dependency-review-on-pr:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event_name, 'pull_request') }}
+    steps:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v4
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v4
+        with:
+          comment-summary-in-pr: always
+          fail-on-severity: low
+          deny-licenses: GPL-2.0-only
+  dependency-review-on-push:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event_name, 'push') }}
+    steps:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v4
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: low
+          deny-licenses: GPL-2.0-only
+          base-ref: ${{ env.BASE_REF }}
+          head-ref: ${{ env.HEAD_REF }}
