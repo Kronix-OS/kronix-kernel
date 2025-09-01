@@ -21,19 +21,14 @@ config-temp/**
 
 target/
 **/target/
-zerOS/iso-root
-zerOS/bin
-zerOS/build
-zerOS/llvm-targets
-zerOS/vendor
-zerOS/tmp
-zerOS/lintcfg/*
 
 intel-manual.pdf
 amd-manual.pdf
 
-/*waf*
-/build
-/.xtask-cache
-/.justfile
-/wscript
+*waf*
+build
+bin
+.xtask-cache
+.justfile
+wscript
+.venv

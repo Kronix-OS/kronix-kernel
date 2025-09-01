@@ -1,0 +1,1 @@
+override MEMOSHELL = $(call memoize,shell,$(1))

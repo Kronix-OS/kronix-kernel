@@ -2,6 +2,10 @@
     "nasm.outputFormat": "elf64",
     "editor.detectIndentation": true,
     "files.associations": {
+        "**/toolchain/install/**/*.h": "cpp",
+        "**/toolchain/install/**/*.hh": "cpp",
+        "**/toolchain/install/**/*.hpp": "cpp",
+        "**/toolchain/install/**/*.tcc": "cpp",
         "*.h": "c",
         "*.pl": "prolog",
         "*.pro": "prolog",
@@ -66,7 +70,7 @@
     },
     "C_Cpp.default.cppStandard": "gnu++23",
     "C_Cpp.default.cStandard": "gnu23",
-    "C_Cpp.default.intelliSenseMode": "linux-clang-x64",
+    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
     //"C_Cpp.intelliSenseCacheSize": 10240,
     //"C_Cpp.intelliSenseMemoryLimit": 8192,
     //"C_Cpp.workspaceParsingPriority": "highest",
@@ -94,7 +98,6 @@
         "**/toolchain/**": true
     },
     "C_Cpp.intelliSenseEngine": "default",
-    "C_Cpp.intelliSenseEngineFallback": "enabled",
     "C_Cpp.autocomplete": "default",
     /* "C_Cpp.exclusionPolicy": "checkFilesAndFolders", */
     "python.analysis.typeCheckingMode": "standard",
@@ -107,7 +110,7 @@
     ],
     "C/C++ Include Guard.Suffix": "_INCLUDED_",
     "C/C++ Include Guard.Path Skip": 2,
-    "C/C++ Include Guard.Prefix": "zerOS_",
+    "C/C++ Include Guard.Prefix": "KRONIX_",
     "editor.tabCompletion": "off",
     "C_Cpp.intelliSenseMemoryLimit": 4096,
     "C_Cpp.workspaceParsingPriority": "medium",
@@ -123,41 +126,14 @@
     "[cpp]": {
         "editor.defaultFormatter": "xaver.clang-format"
     },
-    /* "rust-analyzer.server.path": "/home/axel/.cargo/bin/rust-analyzer", */
-    /* "rust-analyzer.procMacro.server": "/opt/rust-bin-9999/libexec/rust-analyzer-proc-macro-srv", */
-    "rust-analyzer.check.workspace": true,
-    "rust-analyzer.cargo.buildScripts.enable": true,
-    "rust-analyzer.diagnostics.enable": true,
-    "rust-analyzer.hover.memoryLayout.niches": true,
-    "rust-analyzer.hover.memoryLayout.enable": true,
-    "rust-analyzer.hover.memoryLayout.alignment": "both",
-    "rust-analyzer.hover.memoryLayout.offset": "both",
-    "rust-analyzer.hover.memoryLayout.size": "both",
-    "rust-analyzer.procMacro.enable": true,
-    "rust-analyzer.lens.enable": true,
-    "rust-analyzer.rustfmt.rangeFormatting.enable": true,
-    "rust-analyzer.typing.triggerChars": "=.{(<>",
-    "rust-analyzer.signatureInfo.documentation.enable": true,
-    "rust-analyzer.signatureInfo.detail": "full",
-    "rust-analyzer.rustfmt.extraArgs": [
-        "--config-path",
-        "${workspaceFolder}/rustfmt.toml",
-    ],
-    /* "rust-analyzer.inlayHints.implicitDrops.enable": true, */
-    "rust-analyzer.cargo.target": "${workspaceFolder}/../.xtask-cache/x86_64-unknown-kernel.json",
-    "rust-analyzer.cargo.extraEnv": {
-        "ZEROS_TARGET_CPU": "skylake",
-        "ZEROS_TOPDIR": "${workspaceFolder}/../",
-        /* "RUSTFLAGS": "--cfg getrandom_backend=\"rdrand\" -Cforce-unwind-tables -Zmacro-backtrace -Ctarget-cpu=native -Zcrate-attr=feature(unqualified_local_imports) -Zcrate-attr=feature(non_exhaustive_omitted_patterns_lint) -Zcrate-attr=feature(must_not_suspend) -Zcrate-attr=feature(multiple_supertrait_upcastable) -Zcrate-attr=feature(strict_provenance_lints)", */
-        "RUSTFLAGS": "--cfg getrandom_backend=\"rdrand\" -Cforce-unwind-tables -Zmacro-backtrace -Ctarget-cpu=native",
-        "ZEROS_RUST_CONFIG": "${workspaceFolder}/config/lints.rs"
+    "[makefile]": {
+        "editor.insertSpaces": false,
+        "editor.defaultFormatter": "eshojaei.mbake-makefile-formatter"
     },
-    "rust-analyzer.cargo.extraArgs": [
-        /* "+nightly", */
-        "-Zunstable-options",
-        "-Zbuild-std=core,compiler_builtins,alloc",
-        "-Zbuild-std-features=compiler-builtins-mem"
-    ],
-    /* "rust-analyzer.cargo.sysroot": "/home/axel/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu", */
-    "rust-analyzer.procMacro.attributes.enable": true,
+    "mbake.formatOnSave": false,
+    "mbake.executablePath": [
+        "pipenv",
+        "run",
+        "mbake"
+    ]
 }

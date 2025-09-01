@@ -1,0 +1,10 @@
+[submodule "third-party/gmsl"]
+	path = third-party/gmsl
+	url = git@github.com:jgrahamc/gmsl.git
+[submodule "kronix-scripts"]
+	path = kronix-scripts
+	url = git@github.com:Kronix-OS/kronix-scripts.git
+[submodule "third-party/limine"]
+	path = third-party/limine
+	url = git@github.com:limine-bootloader/limine.git
+	branch = v9.x-binary
